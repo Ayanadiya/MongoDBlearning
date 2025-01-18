@@ -1,5 +1,5 @@
 const productList = document.getElementById('productList');
-
+let editingProductId=null;
 function getproducts(){
     axios.get('http://127.0.0.1:3000/shop/getproducts')
     .then(response => {

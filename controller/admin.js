@@ -3,7 +3,7 @@ const Product=require('../models/products');
 exports.postProduct=async (req,res,next) => {
     try {
         const {title,price,description,image}=req.body
-        const product=new Product(title,price,description,image);
+        const product=new Product(title,price,description,image,null,req.user._id);
         const result=await product.save();
         console.log(result);
         res.status(201).json(result)
