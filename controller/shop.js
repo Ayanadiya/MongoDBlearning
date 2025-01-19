@@ -34,3 +34,25 @@ exports.addtocart= async (req,res,next) => {
         res.status(500).json(error);
     }
 }
+
+exports.getcart= async (req,res,next) => {
+    try {
+        const products= await req.user.getcart();
+        console.log(products)
+        res.status(200).json(products);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
+}
+
+exports.deletefromcart= async (req,res,next) => {
+    try {
+        const Id=req.params.Id;
+        await req.user.deletefromcart(Id);
+        res.status(200).json("Product removed from cart");
+    } catch (error) {
+        console.log(error)
+        res.status(500).json(error);
+    }
+}

@@ -7,3 +7,7 @@ exports.getshoppage=(req,res,next) =>{
 exports.getadminpage=(req,res,next) =>{
     res.sendFile(path.join(__dirname, '../','views', 'admin.html'));
 }
+
+exports.getcartpage=(req,res,next) => {
+    res.sendFile(path.join(__dirname, '../', 'views', 'cart.html'));
+}
