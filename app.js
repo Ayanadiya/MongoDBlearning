@@ -17,9 +17,9 @@ app.use('/domjs', express.static(path.join(__dirname,'domjs')));
 //app.use(express.static(path.join(__dirname, 'views')));
 
 app.use((req,res,next) => {
-    User.findById('678b71f576b39db375dd37f2')
+    User.findById('678c8cdbcf99304cc7cb6316')
     .then(user =>{
-        req.user=user;
+        req.user= new User(user.name, user.email, user.cart,user._id);
         next();
     })
     .catch(err =>{

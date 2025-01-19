@@ -52,7 +52,7 @@ class Product{
     static async findById(prodId){
         const db=getdb();
         try {
-            const product = await db.collection('products').find({_id:mongoDb.ObjectId.createFromHexString(prodId)}).next();
+            const product = await db.collection('products').find({_id: mongoDb.ObjectId.createFromHexString(prodId)}).next();
             console.log(product);
             return product; 
         } catch (err) {

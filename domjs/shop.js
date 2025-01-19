@@ -1,5 +1,7 @@
 const productModal=document.getElementById('product-modal');
 const closeModal=document.getElementById('close-modal');
+const addtocart=document.getElementById('add-to-cart');
+addtocart.addEventListener('click', addToCart);
 function getproducts(){
     axios.get('http://127.0.0.1:3000/shop/getproducts')
     .then(response=> {
@@ -28,13 +30,15 @@ function renderProducts(products){
             <h3>${product.title}</h3>
             <p class="price">$${product.price}</p>
             <p class="description">${product.description}</p>
-            <button onclick="addToCart(${product._id})">Add to Cart</button>
         `;
         const detailbtn=document.createElement('button');
         detailbtn.textContent='Details';
         detailbtn.onclick=()=> getDetails(product._id);
         productCard.appendChild(detailbtn);
-        
+        const addtocartbtn=document.createElement('button');
+        addtocartbtn.textContent='Add to Cart';
+        addtocartbtn.onclick=()=> addToCart(product._id);
+        productCard.appendChild(addtocartbtn);
         container.appendChild(productCard);
     });
 }
@@ -60,7 +64,13 @@ closeModal.addEventListener("click", () => {
 });
 
 function addToCart(productId){
-    console.log(`Product with ID ${productId} added to cart`);
+    axios.post(`http://127.0.0.1:3000/shop/cart/${productId}`)
+    .then(response => {
+        alert(response.data);
+    })
+    .catch(err =>{
+        console.log(err);
+    })
 }
 
 window.addEventListener('DOMContentLoaded', () =>{
