@@ -11,3 +11,7 @@ exports.getadminpage=(req,res,next) =>{
 exports.getcartpage=(req,res,next) => {
     res.sendFile(path.join(__dirname, '../', 'views', 'cart.html'));
 }
+
+exports.getorderpage=(req,res,next) =>{
+    res.sendFile(path.join(__dirname, '../', 'views', 'order.html'));
+}

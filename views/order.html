@@ -114,6 +114,42 @@
             background-color: #f24737;
         }
 
+        #order-list {
+    width: 80%;
+    max-width: 1200px;
+}
+
+/* Order container */
+.order {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+/* Order header */
+.order h4 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.item:last-child {
+    border-bottom: none;
+}
     </style>
 </head>
 <body>
@@ -126,17 +162,13 @@
         <a href="/orders">Orders</a>
     </nav>
 
-    <!-- Product Container -->
-    <div class="container" id="cart-container">
-        <!-- Products will be dynamically inserted here -->
+    <!-- Order Container -->
+    <div class="container" id="order-container">
+        <!-- Orders will be dynamically inserted here -->
     </div>
 
-    <!-- Order Button -->
-    <div class="button-container">
-        <button type="button" id="order">Order Now</button>
-    </div>
 
-    <script src="/domjs/cart.js"></script>
+    <script src="/domjs/order.js"></script>
 
 </body>
 </html>

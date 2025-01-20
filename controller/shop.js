@@ -56,3 +56,24 @@ exports.deletefromcart= async (req,res,next) => {
         res.status(500).json(error);
     }
 }
+
+exports.placeorders= async (req,res,next) =>{
+    try {
+        await req.user.addOrder();
+        res.status(200).json('Order placed');
+    } catch (error) {
+        console.log(error)
+        res.status(500).json(error);
+    }
+}
+
+exports.getorders= async (req,res,next) =>{
+    try {
+        const orders= await req.user.getorder();
+        console.log(orders);
+        res.status(200).json(orders)
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
+}

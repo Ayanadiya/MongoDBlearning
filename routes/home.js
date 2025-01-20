@@ -10,4 +10,6 @@ router.get('/admin', homeController.getadminpage);
 
 router.get('/cart', homeController.getcartpage);
 
+router.get('/orders', homeController.getorderpage);
+
 module.exports=router;

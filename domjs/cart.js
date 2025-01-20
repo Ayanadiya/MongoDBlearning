@@ -1,4 +1,6 @@
 const cartlist=document.getElementById('cart-container');
+const orderbtn=document.getElementById('order');
+orderbtn.addEventListener('click', placeorder);
 
 window.addEventListener('DOMContentLoaded', () => {
     fetchcart();
@@ -36,6 +38,16 @@ function deletefromcart(productId, product){
     .then(response => {
         alert(response.data);
         cartlist.removeChild(product);
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+
+function placeorder(){
+    axios.post(`http://127.0.0.1:3000/shop/placeorder`)
+    .then(response =>{
+        alert('Orders placed');
     })
     .catch(err => {
         console.log(err);
