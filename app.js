@@ -32,7 +32,7 @@ app.use('/shop', shoprouter);
 app.use('/admin', adminrouter);
 app.use(homerouter);
 
-mongoose.connect('mongodb+srv://userid:password@cluster0.so6u9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect('mongodb+srv://@cluster0.so6u9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 .then(result => {
     console.log('connected');
     User.findOne()

@@ -39,9 +39,9 @@ exports.addtocart= async (req,res,next) => {
 
 exports.getcart= async (req,res,next) => {
     try {
-        const products= await req.user.getcart();
-        console.log(products)
-        res.status(200).json(products);
+        const user= await req.user.populate('cart.items.productId');
+        console.log(user.cart.items)
+        res.status(200).json(user.cart.items);
     } catch (error) {
         console.log(error);
         res.status(500).json(error);

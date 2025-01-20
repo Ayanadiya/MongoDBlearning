@@ -15,10 +15,10 @@ function fetchcart(){
         productCard.classList.add('product-card');
 
         productCard.innerHTML = `
-            <img src="${product.imageUrl}" alt="${product.title}">
-            <h3>${product.title}</h3>
-            <p class="price">$${product.price}</p>
-            <p class="description">${product.description}</p>
+            <img src="${product.productId.imageUrl}" alt="${product.productId.title}">
+            <h3>${product.productId.title}</h3>
+            <p class="price">$${product.productId.price}</p>
+            <p class="description">${product.productId.description}</p>
             <h5>Quantity:${product.quantity}</h5>
         `;
         const deletebtn=document.createElement('button');

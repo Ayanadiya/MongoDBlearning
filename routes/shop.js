@@ -9,9 +9,9 @@ const router=express.Router();
 
  router.get('/getproduct/:Id', shopController.getProductbyId);
 
-// router.post('/cart/:Id', shopController.addtocart);
+ router.post('/cart/:Id', shopController.addtocart);
 
-// router.get('/cart', shopController.getcart);
+ router.get('/cart', shopController.getcart);
 
 // router.put('/deletefromcart/:Id', shopController.deletefromcart);
 
