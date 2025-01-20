@@ -3,7 +3,9 @@ const User=require('../models/user');
 
 exports.getProducts= async (req,res,next) => {
     try {
-        const products= await Product.find();
+        const products= await Product.find()
+        // .select('title price -_id') select is used to choose which fields are to be return and also mention filed to avoid with - sign before them.
+        // .populate('userId', 'name'); populate is used to fill data in the field and mention reqiured fields.
         console.log("Products sending to frotend", products)
         res.status(200).json(products);
     } catch (error) {

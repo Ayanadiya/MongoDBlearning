@@ -7,7 +7,8 @@ exports.postProduct=async (req,res,next) => {
             title:title,
             price:price,
             description:description,
-            imageUrl:image
+            imageUrl:image,
+            userId:req.user
         });
         const result=await product.save();
         console.log(result);
