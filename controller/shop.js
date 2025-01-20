@@ -3,7 +3,7 @@ const User=require('../models/user');
 
 exports.getProducts= async (req,res,next) => {
     try {
-        const products= await Product.fetchAll();
+        const products= await Product.find();
         console.log("Products sending to frotend", products)
         res.status(200).json(products);
     } catch (error) {

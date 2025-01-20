@@ -4,10 +4,10 @@ const adminController=require('../controller/admin');
 
 const router=express.Router();
 
-router.post('/addproduct', adminController.postProduct);
+ router.post('/addproduct', adminController.postProduct);
 
-router.put('/editproduct/:Id', adminController.editproduct);
+ router.put('/editproduct/:Id', adminController.editproduct);
 
-router.put('/deleteproduct/:Id', adminController.deleteproduct);
+ router.put('/deleteproduct/:Id', adminController.deleteproduct);
 
 module.exports=router;
