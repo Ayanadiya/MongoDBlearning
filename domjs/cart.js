@@ -23,7 +23,7 @@ function fetchcart(){
         `;
         const deletebtn=document.createElement('button');
         deletebtn.textContent='Delete';
-        deletebtn.onclick=()=> deletefromcart(product._id, productCard);
+        deletebtn.onclick=()=> deletefromcart(product.productId._id, productCard);
         productCard.appendChild(deletebtn);
         cartlist.appendChild(productCard);
         });

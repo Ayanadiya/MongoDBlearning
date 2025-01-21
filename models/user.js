@@ -43,6 +43,14 @@ userSchema.methods.addtocart= function(product){
             return this.save();
 }
 
+userSchema.methods.deletefromcart=function(prodId){
+    const updatedcartItems=this.cart.items.filter(item => {
+                    return item.productId.toString()!== prodId.toString();
+                })
+    this.cart.items=updatedcartItems;
+    this.save();
+}
+
 module.exports=mongoose.model('User', userSchema);
 // const mongoDb=require('mongodb');
 // const {getdb}=require('../util/database');

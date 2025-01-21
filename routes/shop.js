@@ -13,7 +13,7 @@ const router=express.Router();
 
  router.get('/cart', shopController.getcart);
 
-// router.put('/deletefromcart/:Id', shopController.deletefromcart);
+ router.put('/deletefromcart/:Id', shopController.deletefromcart);
 
 // router.post('/placeorder', shopController.placeorders);
 
