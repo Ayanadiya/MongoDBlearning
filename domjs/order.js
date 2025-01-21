@@ -8,7 +8,6 @@ function fetchorders(){
     axios.get(`http://127.0.0.1:3000/shop/orders`)
     .then(response => {
         const orders=response.data;
-        console.log(orders);
         orders.forEach(order => {
             createorder(order);
         });
@@ -25,10 +24,11 @@ function createorder(order){
     orderId.textContent=`Order ID-${order._id}`
     orderdiv.appendChild(orderId);
     const orderitems=document.createElement('ul');
-    order.items.forEach(item=>{
+    order.products.forEach(item=>{
+        console.log(item);
         const product=document.createElement('li');
         product.classList.add('item');
-        product.textContent=`${item.title} - ${item.quantity}`;
+        product.textContent=`${item.product.title} - ${item.quantity}`;
         orderitems.appendChild(product);
     })
     orderdiv.appendChild(orderitems);
