@@ -48,7 +48,12 @@ userSchema.methods.deletefromcart=function(prodId){
                     return item.productId.toString()!== prodId.toString();
                 })
     this.cart.items=updatedcartItems;
-    this.save();
+    return this.save();
+}
+
+userSchema.methods.clearcart= function(){
+    this.cart={items:[]};
+    return this.save();
 }
 
 module.exports=mongoose.model('User', userSchema);

@@ -1,5 +1,6 @@
 const Product=require('../models/products');
 const User=require('../models/user');
+const Order=require('../models/order');
 
 exports.getProducts= async (req,res,next) => {
     try {
@@ -61,7 +62,19 @@ exports.deletefromcart= async (req,res,next) => {
 
 exports.placeorders= async (req,res,next) =>{
     try {
-        await req.user.addOrder();
+        const user= await req.user.populate('cart.items.productId');
+        const products=user.cart.items.map(item =>{
+            return {product:{...item.productId._doc}, quantity:item.quantity};
+        });
+        const order= new Order({
+            user:{
+                name:req.user.name,
+                userId:req.user
+            },
+            products:products
+        })
+        await order.save();
+        await req.user.clearcart();
         res.status(200).json('Order placed');
     } catch (error) {
         console.log(error)
@@ -71,7 +84,7 @@ exports.placeorders= async (req,res,next) =>{
 
 exports.getorders= async (req,res,next) =>{
     try {
-        const orders= await req.user.getorder();
+        const orders= await Order.find({'user.userId':req.user._id});
         console.log(orders);
         res.status(200).json(orders)
     } catch (error) {

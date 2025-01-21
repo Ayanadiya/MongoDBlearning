@@ -8,6 +8,7 @@ function fetchorders(){
     axios.get(`http://127.0.0.1:3000/shop/orders`)
     .then(response => {
         const orders=response.data;
+        console.log(orders);
         orders.forEach(order => {
             createorder(order);
         });
